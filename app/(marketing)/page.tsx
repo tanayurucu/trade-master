@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import localFont from "next/font/local";
 import { Poppins } from "next/font/google";
-import { Medal } from "lucide-react";
 import tradeImage from "@/public/trading_graph.jpg";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";

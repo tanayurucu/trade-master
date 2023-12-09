@@ -8,7 +8,7 @@ const MarketingLayout = ({
 }) => {
   return (
     // bg-cyan-900
-    <div className="h-full ">
+    <div className="h-full">
       <Navbar />
       <main className="pt-40 pb-20 bg-gradient-to-r from-cyan-900 to-blue-500">
         {children}

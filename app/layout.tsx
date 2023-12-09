@@ -19,12 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <ColorSchemeScript />
-      </head>
-      <body className={inter.className}>
-        <MantineProvider>{children}</MantineProvider>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
