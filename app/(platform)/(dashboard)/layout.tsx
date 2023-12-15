@@ -1,3 +1,4 @@
+import { DoubleNavbar } from "@/components/DoubleNavbar/DoubleNavbar";
 import { Navbar } from "./_components/navbar";
 
 const DashboardLayout = ({ 
@@ -8,6 +9,7 @@ const DashboardLayout = ({
   return (
     <div className="h-full">
       <Navbar />
+      <DoubleNavbar></DoubleNavbar>
       {children}
     </div>
   );
