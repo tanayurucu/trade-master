@@ -39,7 +39,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import Loading from "@/app/loading";
+import Link from "next/link";
 
 const data: StockDetails[] = [
   {
@@ -73,7 +83,10 @@ export const columns: ColumnDef<StockDetails>[] = [
   {
     accessorKey: "name",
     header: "Name",
-    cell: ({ row }) => <div className="capitalize">{row.getValue("name")}</div>,
+    cell: ({ row }) => {
+      const stockDetail = row.original;
+      return <Link className="capitalize" href={`stocks/${stockDetail.id}`}>{stockDetail.name}</Link>
+    }
   },
   {
     accessorKey: "price",
@@ -118,7 +131,11 @@ export const columns: ColumnDef<StockDetails>[] = [
   },
 ];
 
-export function StocksTable() {
+interface StocksTableProps {
+  isLoading: boolean;
+}
+
+export function StocksTable({ isLoading }: StocksTableProps) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -146,14 +163,17 @@ export function StocksTable() {
     },
   });
 
-  const [selectedValue, setSelectedValue] = React.useState(''); // Initial value
-  const handleOptionChange = (value:string) => {
-    const intValue = Number(value)
-    table.setPageSize(intValue)
-    console.warn('Selected value:', value);
+  const [selectedValue, setSelectedValue] = React.useState(""); // Initial value
+  const handleOptionChange = (value: string) => {
+    const intValue = Number(value);
+    table.setPageSize(intValue);
+    console.warn("Selected value:", value);
   };
 
   // table.setPageSize(1);
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
@@ -254,7 +274,7 @@ export function StocksTable() {
           <SelectContent>
             <SelectGroup>
               <SelectItem value="1">1</SelectItem>
-              <SelectItem value="3" >3</SelectItem>
+              <SelectItem value="3">3</SelectItem>
               <SelectItem value="5">5</SelectItem>
             </SelectGroup>
           </SelectContent>
