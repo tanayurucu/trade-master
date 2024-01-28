@@ -32,6 +32,8 @@ const MarketingPage = () => {
       if (isSignedIn) {
         router.push("/home");
       }
+    }else{
+      setLoading(true)
     }
   }, [isSignedIn, isLoaded, router]);
   if (loading){

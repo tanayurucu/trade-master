@@ -50,6 +50,8 @@ import {
 } from "@/components/ui/select";
 import Loading from "@/app/loading";
 import Link from "next/link";
+import { HoverCard, HoverCardTrigger } from "@radix-ui/react-hover-card";
+import { HoverCardContent } from "@/components/ui/hover-card";
 
 const data: StockDetails[] = [
   {
@@ -85,8 +87,17 @@ export const columns: ColumnDef<StockDetails>[] = [
     header: "Name",
     cell: ({ row }) => {
       const stockDetail = row.original;
-      return <Link className="capitalize" href={`stocks/${stockDetail.id}`}>{stockDetail.name}</Link>
-    }
+      return (
+        <HoverCard>
+          <HoverCardTrigger asChild>
+            <Link className="capitalize hover:underline" href={`stocks/${stockDetail.id}`}>
+              {stockDetail.name}
+            </Link>
+          </HoverCardTrigger>
+          <HoverCardContent>Stock Details</HoverCardContent>
+        </HoverCard>
+      );
+    },
   },
   {
     accessorKey: "price",

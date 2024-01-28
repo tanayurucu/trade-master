@@ -10,7 +10,7 @@ const headingFont = localFont({
 
 export const Logo = () => {
   return (
-    <Link href="/">
+    <Link href="/home">
       <div className="hover:opacity-75 transition items-center gap-x-1 hidden md:flex">
         <Image
           src="/trade-master-logo.svg"

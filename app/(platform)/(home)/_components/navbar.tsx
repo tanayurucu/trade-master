@@ -4,6 +4,16 @@ import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { Search } from "./search";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import Link from "next/link";
+import React from "react";
+import { NavigationMenuDemo } from "./navigation-trial";
 
 export const Navbar = () => {
   return (
