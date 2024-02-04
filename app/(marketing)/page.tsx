@@ -39,7 +39,6 @@ const MarketingPage = () => {
   if (loading){
     return <Loading />
   }
-
   return (
     <div className="flex items-center justify-center flex-col">
       <div

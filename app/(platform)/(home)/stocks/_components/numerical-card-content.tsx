@@ -2,7 +2,7 @@ import React from "react";
 
 interface NumericalCardContentProps {
   title: string;
-  value: number;
+  value: number | string;
   info: string;
 }
 
